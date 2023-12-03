@@ -5,25 +5,48 @@
 }
 body {
     font-family: Tahoma, Arial;
+    width:100%;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
 }
 .slider-container {
     margin: 10px auto;
     width: 800px;
-    height: 250px;
     position: relative;
 }
+@media (min-width:991px) {
+    body{
+        min-height: 100vh;
+    }
+    .slider-container{
+        min-height: 200px;
+    }
+}
+@media (max-width:991px) {
+    .slider-container{
+        width: 400px;
+        min-height: 300px;
+    }
+}
 .slider-container img {
+    display: block;
     position: absolute;
     opacity: 0;
     transition: opacity 1s;
-    height: 255px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
+    height: auto;
 }
 .slider-container img.active {
     opacity: 1;
     user-select: none;
+}
+@media (max-width:991px) {
+    .slider-container img {
+        height: 350px;
+    }
 }
 .slider-container .slide-number {
     position: absolute;
@@ -41,6 +64,11 @@ body {
     width: 800px;
     margin: auto;
     overflow: hidden;
+}
+@media (max-width:991px) {
+    .slider-controls{
+        width: 400px;
+    }
 }
 .slider-controls .prev,
 .slider-controls .next {
@@ -92,4 +120,38 @@ body {
 .slider-controls .indicators ul li.active {
     background-color: #009688;
     color: #FFF;
+}
+/* Mini Screens */
+@media (max-width:400px) {
+    body {
+    }
+    .slider-container{
+        width: 100%;
+        min-height: 250px;
+    }
+    .slider-container img {
+        height: 250px;
+    }
+    .slider-controls{
+        width: 250px;
+        font-size: 11px !important;
+    }
+    .indicators ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        transform: translateY(4px);
+    }
+    .indicators ul li{
+        line-height: 1.2 !important;
+        width: 15px !important;
+        height:15px !important ;
+        margin: 0 5px !important;
+    }
+    .slider-controls .prev, .slider-controls .next {
+        font-size: 11px;
+        width: 20%;
+        padding: 5px;
+    }
 }
